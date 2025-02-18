@@ -1,0 +1,4 @@
+authentication is a process that verifies the user by checking his identity for providing
+him the acces to the system.
+
+authorization is the process to determine what permissions a user have.

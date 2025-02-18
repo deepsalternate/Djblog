@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!--  -->
+<p>your ar logged in as {{user}}</p>
+<div class="row">
+    <!-- leftsidebar -->
+     <!-- Load the sidebar here -->
+        {% include 'dashboardx/sidebar.html' %}
+
+    <!-- right side content -->
+     <div class="col-md-9">
+        <div class="row">
+            <div class="col">
+                <div class="card border-default mb-3">
+                    <div class="card-header text-center text-uppercase font-weight-bold">all cat</div>
+                    <h5 class="card-body text-center">{{category_count}}</h5>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card border-default mb-3">
+                    <div class="card-header text-center text-uppercase font-weight-bold">all post</div>
+                    <h5 class="card-body text-center">{{Blog_count}}</h5>
+                </div>
+            </div>
+        </div>
+
+     </div>
+</div>
+
+
+{% endblock %}

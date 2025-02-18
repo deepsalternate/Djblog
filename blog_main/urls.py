@@ -31,7 +31,7 @@ urlpatterns = [
     path('blog/<slug:slug>/',blog_views.blogs,name='blogs'),
     path('aboutus/',include('aaboutus.urls')),
     path('blog/search/',blog_views.search,name='search'),
-    
+    path('dashboard/',include('dashboard.urls')),
     
     # path('login/',views.login,name='login'),
     path('logout/',views.logout,name='logout'),
