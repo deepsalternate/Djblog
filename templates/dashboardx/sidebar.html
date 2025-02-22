@@ -7,7 +7,7 @@
     <div class="nav flex-column nav-pills bg-light" aria-orientation="vertical">
       <a href="{% url 'dashboard' %}" class="nav-link text-dark {% if '/dashboard/' == request.path %}bg-warning{% endif %}">dashboard</a>   
       <a href="{% url 'category' %}" class="nav-link text-dark {% if '/category/' in request.path %}bg-warning{% endif %}">category</a> 
-      <a href="" class="nav-link text-dark ">Post</a> 
+      <a href="{% url 'posts' %}" class="nav-link text-dark {% if '/posts/' in request.path %} bg-warning {% endif %}">Post</a> 
       <a href="" class="nav-link text-dark ">logout</a> 
       <a href="" class="nav-link text-dark ">dashboard</a> 
 

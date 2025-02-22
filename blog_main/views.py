@@ -17,7 +17,7 @@ def home(request):
     context={
         'categories':categories,
         'featured_posts':featured_posts,
-        'posts':post,
+        'post':post,
         'about':about,
     }
     return render(request, 'home.html', context) 

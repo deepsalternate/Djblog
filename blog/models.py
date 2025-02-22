@@ -20,10 +20,10 @@ STATUS_CHOICES=(
 
 class Blog(models.Model):
     title=models.CharField(max_length=255)
-    slug=models.SlugField(max_length=255,unique=True,blank=True)
+    slug=models.SlugField(max_length=500,unique=True)
     category=models.ForeignKey(Category,on_delete=models.CASCADE)
     author=models.ForeignKey(User,on_delete=models.CASCADE)
-    featured_image=models.ImageField(upload_to='uploads/%Y/%m/%d/') 
+    featured_image=models.ImageField(upload_to='uploads/%Y/%m/%d/',blank=True) 
     excerpt=models.TextField(max_length=255)
     content=models.TextField(max_length=2000)
     status=models.CharField(max_length=20,choices=STATUS_CHOICES,default='Draft')
