@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+<p>your ar logged in as {{user}}</p>
+<p>your ar logged in as {{user}}</p>
+<div class="row">
+  
+{% include 'dashboardx/sidebar.html' %}
+
+
+ <div class="col-md-9">
+    {%  if perms.auth.view_users %}
+    <h2> ADD new User</h2>
+
+    <form action="{% url 'add_user' %}" method="POST" >
+        {% csrf_token %}
+        {{form | crispy}}
+        <button type="submit" class="btn btn-dark text-light">Submit</button>
+    </form>
+    {% else %}
+    <h2> You are not allowed to add user</h2>
+    {% endif %}
+ </div>
+
+
+
+</div>
+
+
+{% endblock %}

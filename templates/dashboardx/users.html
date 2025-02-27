@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<p>your ar logged in as {{user}}</p>
+<div class="row">
+  
+{% include 'dashboardx/sidebar.html' %}
+
+
+ <div class="col-md-9">
+  {%  if perms.auth.view_users %}
+    
+    <table class="table table-hover">
+      
+        <h2> All Users</h2>
+        <a href="{% url 'add_user' %}" class="btn btn-dark text-light  float-right mb-2">Add New Users</a>
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">name</th>
+            <th scope="col">Username</th>
+            <th scope="col">Email</th>
+            <th scope="col">Active</th>
+            <th scope="col">Staff</th>
+            <th scope="col">superuser</th>
+            <th scope="col">Action</th>
+           
+          </tr>
+        </thead>
+        <tbody>
+            {% for i in users %}
+
+          <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{i.first_name}} {{ i.last_name }}</td>
+            <td>{{i.username}}</td>
+            <td>{{i.email}}</td>
+            <td>{% if i.is_active %} <i class="fa fa-check text-success"></i> {% else %}<i class="fa fa-times text-danger"></i>{% endif%}</td>
+            <td>{{i.is_staff}}</td>
+            <td>{{i.is_superuser}}</td>
+            <td>{% if post.IS_FEATURED %} <i class="fa fa-check text-success"></i> {% else %} <i class="fa fa-times text-danger"></i> {% endif %}</td>
+            <td>
+                <a href="{% url 'edit_user' i.id %} "><i class="fa fa-edit"></i></a>
+                &nbsp;
+                <a href="{% url 'delete_user' i.id %}"><i class="fa fa-trash"></i></a>
+            </td>
+          </tr>
+          {% endfor %}
+
+        </tbody>
+      </table>
+       {% else %}
+                 <h1>you dont have permission to view users</h1>
+      {% endif %}
+ </div>
+
+
+
+</div>
+{% endblock %}
