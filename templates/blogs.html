@@ -23,6 +23,39 @@
                 <section class="mb-5">
                     <p class="fs-5 mb-4">{{single_blog.excerpt}}.</p>
                     <p > {{single_blog.content}}</p>
+                    <!-- comments -->
+                     <h3>Comments ( {{ comments_count }} )</h3>
+                     {% if comments %}
+                        {% for comment in comments %}
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <p class="card-text mb-0">{{comment.comment}}</p>
+                                    <small>
+                                    <p class="card-text">By: {{comment.user}} </p>
+                                    </small>
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                    {% else %}
+                        <p>No comments yet</p>
+                    {% endif %}
+                    <br>
+                    <div class="form-group">
+                        {% if user.is_authenticated %}
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="comment">Comment</label>
+                                <textarea class="form-control" name="comment" id="comment" rows="3" placeholder="Write your comment"></textarea>
+                                <input type="submit" name="" value="Submit" class="btn btn-primary mt-2">
+
+                            </div>
+                        </form>
+                        {% else %}
+                            <p>Please <a href="{% url 'login' %}">login</a> to comment</p>
+                        {% endif %}
+                    </div>
                     </section>
             </article>
         </div>
